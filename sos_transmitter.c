@@ -16,22 +16,29 @@ void display_S_in_morse();
 void display_O_in_morse();
 
 
-
+/*
+* @brief: Função responsavel por exibir o Codigo Morse da letra S no LED pre-definido
+*/
 void display_S_in_morse(){
 
   for(int i=0; i<3; ++i){
     gpio_put(PIN_RED_LED, true);
     sleep_ms(DIT_DURATION);
     gpio_put(PIN_RED_LED, false);
+    /*Pausa apenas entre o primeiro e o segundo sinal e entre o segundo e terceiro*/
     if(i != 2) sleep_ms(TIME_BETWEEN_SIGNALS);
   }
 }
 
+/*
+* @brief: Função responsavel por exibir o Codigo Morse da letra O no LED pre-definido
+*/
 void display_O_in_morse(){
   for(int i=0; i<3; ++i){
     gpio_put(PIN_RED_LED, true);
     sleep_ms(DAT_DURATION);
     gpio_put(PIN_RED_LED, false);
+    /*Pausa apenas entre o primeiro e o segundo sinal e entre o segundo e terceiro*/
     if(i != 2) sleep_ms(TIME_BETWEEN_SIGNALS);
   }
 }
@@ -42,14 +49,19 @@ int main() {
   gpio_set_dir(PIN_RED_LED, GPIO_OUT);
   stdio_init_all();
 
+  /*Loop principal*/
   while (true) {
     printf("Inicio da transmissão\n");
+
     display_S_in_morse();
     sleep_ms(TIME_BETWEEN_LETTERS);
+
     display_O_in_morse();
     sleep_ms(TIME_BETWEEN_LETTERS);
+
     display_S_in_morse();
     sleep_ms(TIME_BETWEEN_TRANSMISSION);
+    
     printf("Reiniciando transmissão...\n");
   }
 }
