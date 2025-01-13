@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": 119.45, "left": 10, "attrs": {} },
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico1",
+      "top": 60,
+      "left": 255.95,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 230.4,
+      "left": 98.8,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 174.85,
+      "left": 73.8,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "bb1:8t.e", "bb1:8b.f", "black", [ "v0" ] ],
+    [ "bb1:8t.b", "pico1:GND.2", "black", [ "v0" ] ],
+    [ "r1:1", "bb1:9b.j", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:15b.j", "", [ "$bb" ] ],
+    [ "led1:A", "bb1:9b.h", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:8b.h", "", [ "$bb" ] ],
+    [ "bb1:15b.i", "pico1:GP12", "gold", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

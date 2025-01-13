@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = "build/sos_transmitter.uf2"
+elf = "build/sos_transmitter.elf"
